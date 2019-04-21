@@ -1,3 +1,3 @@
-const textArray = ['Hello how was yout day?', 'Oh really? You are such a dumb 😂', 'Okay..go on', 'Lets say you are on the right way! ✌']
+const textArray = ['How productive has been your day on a scale of 1 to 10?', ' Congratulations, that’s above your normal productivity level\nWhat have you done today that was productive?', 'How have you been productive during your 4 classes?', ' Will these actions contribute to your goals?', ' Good, please describe how these actions taken regularly could contribute to your goals?', ' Your journaling session for today is completed, congratulations!']
 
 module.exports = textArray;

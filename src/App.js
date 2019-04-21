@@ -3,9 +3,47 @@ import textArray from './textlist'
 import './App.css';
 
 class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      splash: true
+    }
+
+    //binds
+    this.setTimeout = this.setTimeout.bind(this);
+  }
+
+  setTimeout(){
+    this.setState({splash: false})
+    console.log('asfaf')
+  }
+
+  render() {
+    let toRender
+    if(this.state.splash){
+      toRender = <Splash timeout={this.setTimeout}></Splash>
+    } else{
+      toRender = <Container textArray={textArray}></Container>
+    }
+    return(
+      <div>
+        {toRender}
+      </div>
+    )
+  }
+}
+
+class Splash extends Component{
+
+  componentDidMount() {
+    setInterval(() => this.props.timeout(), 3500);
+  }
+
   render() {
     return(
-      <Container textArray={textArray}></Container>
+      <div id="full-screen-splash">
+        <img src="splash.png" alt="splash"></img>
+      </div>
     )
   }
 }
@@ -28,7 +66,7 @@ class Container extends Component {
       this.setState(state => {
         state.items.push({text: text, class: 'bubble left'})
       });
-    }else {
+    }else if(textArray.length > 0) {
       this.setState(state => {
         state.items.push({text: textArray.shift(), class: 'bubble right'})
       });
@@ -63,7 +101,12 @@ class Container extends Component {
     const itemList = this.state.items.map(item => {
       // eslint-disable-next-line no-unused-expressions
       return (
-        <Bubble key={item.text} text={item.text} class={item.class}></Bubble>
+        <Bubble 
+        key={item.text}
+        text={item.text} 
+        class={item.class}
+        >
+        </Bubble>
       )
     });
 
@@ -85,6 +128,14 @@ class MessageInput extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+
+  handleKeyPress(e) {
+    console.error(e.key)
+    if(e.key === 'Enter'){
+      this.props.onButtonClick(e);
+   }
   }
 
   handleChange(e) {
@@ -98,8 +149,13 @@ class MessageInput extends React.Component {
   render() {
     return (
       <div class="input-box">
-       <input class="" type="text" value={this.props.value} onChange={this.handleChange} />
-       <button class='btn btn-dark' onClick={this.handleClick}>Send</button>
+       <input 
+       class="text-input" 
+       type="text" 
+       value={this.props.value} 
+       onChange={this.handleChange} 
+       onKeyPress={this.handleKeyPress}/>
+       <button class="btn-send" onClick={this.handleClick}>Send</button>
       </div>
     );
   }

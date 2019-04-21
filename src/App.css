@@ -1,14 +1,32 @@
 /* Custom CSS */
+
+#full-screen-splash{
+  display: flex;
+  height: 80vh;
+}
+
+#full-screen-splash img{
+  width: 100%;
+  margin: auto;
+
+  -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 3s; /* Firefox < 16 */
+   -ms-animation: fadein 3s; /* Internet Explorer */
+    -o-animation: fadein 3s; /* Opera < 12.1 */
+       animation: fadein 3s;
+}
+
 #list-container {
   overflow: auto;
   height: 95vh;
 }
 
 .bubble {
+  width: auto;
+  height: auto;
+  font-size: 1.6em;
   padding: 20px;
   margin: 2em;
-  height: auto;
-  width: 15em;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -22,15 +40,45 @@
 }
 
 .bubble.right {
-  margin: 2em 1em 2em 9em !important;
-  background: slategray;
-  border-radius: 11px 11px 0px 11px;
+  border-radius: 22px 22px 0px 22px;
+  border: 3.5px solid #7BBF81;
   animation: Jumpin 4s;
 }
 
 .bubble.left {
-  background: tomato;
-  border-radius: 11px 11px 11px 0px;
+  border: 3.5px solid #0e0e0e;
+  border-radius: 22px 22px 22px 0px;
+}
+
+/* input area */
+
+.input-box{
+  height: 3.2em;
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  width: 100%;
+}
+
+.btn-send{
+  height: inherit;
+  width: 5em;
+  background-color: #7BBF81; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.4em;
+}
+
+.text-input{
+  height: inherit;
+  width: 100%;
+  border-radius: 0px;
+  padding-left: 0.5em;
+  font-size: 1.4em;
+  padding-right: 0.5em;
 }
 
 
